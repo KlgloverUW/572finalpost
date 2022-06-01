@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="your name">
+    <meta name="description" content="description of your page">
+    <title>Quantifying Legal Scholar Anonymization</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Quantifying Legal Scholar Anonymization</h1>
+        <h2>MLIS 572, Spring 2022 Final Project</h2>
+        <h2>Kristin Glover</h2>
+    </header>
+    <h2> Citation Counts & Citation Rules in Legal Scholarship</h2>
+    <p>Authors of articles, books, and reports might never get cited by name in legal scholarship and court documents. The Bluebook, the citation manual used by legal scholars, attorneys, and judges, says when there are more than two authors the co-authors’ names may be replaced by “et al.” “when saving space is desired.”   The Bluebook used to disfavor including names when there were more than two authors. In the 2000 seventeenth edition it said to use et al. for more than two authors “unless the inclusion of other authors is particularly relevant.”  The rule relaxed in the next edition which allowed writers to “[e]ither use the first author’s name followed by “et al.” or list all of the author’s names” but advised “[w]here saving space is desired…the first method is suggested.”  A few years later in 2010 the nineteenth edition gave more guidance to cite all of the authors’ names “when listing all…is particularly relevant.”  The vague “particularly relevant” guidance has remained unchanged in the twelve years since. 
+        At the same time as The Bluebook allows co-authors to remain anonymous in citations, law school administrators increasingly emphasize law faculty’s citation counts in gauging their achievements. As a result law school librarians are devoting more time and resources to helping faculty boost their scholarship’s visibility. Focus on quantifying legal scholars’ scholarly impact accelerated after U.S. News & World Report (USN&WR) announced in Winter 2019 a plan to count citations to faculty’s law journal articles as part of their law school rankings.  Criticism from legal scholars and law librarians that USN&WR’s proposed measurement of scholarly impact would undercount interdisciplinary work and be a poor proxy for faculty’s contributions to legal thought caused them to indefinitely postpone the new ranking in Summer 2021. 
+        Replacing an author’s name with “et al.” does not cause citation counters to miss crediting them with a citation to their co-authored article. But it does reduce the unnamed scholar’s visibility. Investigating the frequency of co-authorship in a subset of law journal articles is a way to estimate how many authors are being disappeared by The Bluebook’s et al. rule. Analyzing co-authorship data of recently published articles also gives the opportunity to look at how the pandemic may have affected scholarly collaboration.  
+    </p>
+    <h2>The Dataset</h2>
+    <h3>Searching for a Dataset of Articles</h3>
+    <p>The dataset is articles published in four law journals from the beginning of 2019 to May 2022. The articles were published in the four journals responsible for editing The Bluebook citation manual: Harvard Law Review, Columbia Law Review, University of Pennsylvania Law Review, and Yale Law Journal. The author generated the dataset with a search in Westlaw’s Secondary Sources > Law Reviews & Journals database.  Westlaw is one of three major legal research databases used by law schools, law practices, and courts.  
+        The dataset is limited to journals whose editors edit the legal citation manual (The Bluebook) which are housed in law schools USN&WR ranks in the top ten.  The dataset is narrowed to these four journals to: have a manageable number of observations to edit; analyze author repetition and “nepotism” (publishing faculty at the journal’s school) within journals; and to represent my interest in the impact of The Bluebook’s “et al.” rule. 
+    </p>
+    <h3>Cleaning the Dataset</h3>
+    <p>The author edited Westlaw’s spreadsheet of search results to separate co-author names included in the single author column into individual columns. In beginning to work with the data using dplyr the author realized the Westlaw search had pulled false hits of articles from the University of the District of Columbia Law Review and removed these rows. The author also realized the dataset included unsigned Harvard Law Review articles summarizing recent case decisions and removed those rows. Varying date formats were standardized in an added publication year column.
+    </p>
+    <h3>The Dataset's Limitations</h3>
+    <p>The dataset is a non-random sample that may be too limited to reflect any significant trends in co-authorship. It includes only four journals’ content and those journals arguably are homogenous in that they all are edited by students in USN&WR-ranked top ten law schools and are ranked among the top ten most cited journals.  The date range also is narrowed to only the past three years, the latter of which law journals delayed publication while adjusting to pandemic workflow changes. Even though the time period was chosen to compare pre- and post-pandemic co-authorship, the actual results may reflect more pre-pandemic than pandemic-generated articles because of the lag between when an article is written, accepted, edited, and finally published.  
+    </p>
+    <h2>Analysis</h2>
+    <h3>Numbers of Articles and Authors</h3>
+    <p>Three of the four journals – Columbia, University of Pennsylvania, and Yale – had nearly the same number of the total 501 articles published during the past three years. Harvard published Columbia published the most articles in the past three years (134) closely followed by University of Pennsylvania (132). Harvard published the least (107), 18% fewer articles than the average number published by the other three journals. But a significant number of unsigned articles about recent leading case decisions published in Harvard Law Review during the time period were removed from the dataset since they did not include information relevant to the author analysis. 
+    </p>
+    <img src="images/Arts by Jnl.png"
+        class="image">
+    <p>Nearly one out of every five of the articles was written by two or more people. More co-authored articles were published in both 2020 and 2021 than pre-pandemic in 2019. The limited four months of data available for 2022 cannot be compared to the prior full three years’.
+    </p>
+    <img src="images/CoAuth Arts per Yr.png"
+        class="image">
+    <p>In the future I would revise this analysis by extending the dataset to 2017 through the end of 2022. Additional years’ data would more reliably show whether there are noticeable publishing trends potentially related to the pandemic. 
+        University of Pennsylvania published the most co-authored articles. Almost a quarter of its articles had more than one author. Columbia and Yale published the same number (24). Harvard published less than half as many co-authored articles as UPenn. 
+    </p>
+    <img src="images/CoAuth Arts by Jnl.png"
+        class="image">
+    <img src="images/PercCoAuthByJnl.png"
+        class="image">
+    <p>Only thirteen articles, less than 3% of the total, would be governed by Bluebook’s et al. rule for more than two authors. Most of the multi-authored articles were published in 2019. Columbia Law Review published more of them than any of the other journals.  
+    </p>
+    <h2>Repeating Authors</h2>
+    <p>I struggled to find a reliable way to identify authors who had published multiple articles in the dataset using R. Text analysis tools found five authors who showed up the most in the dataset. Tara Leigh Grove had the most (five articles), and four authors each had three. Unable to figure out how to apply dplyr to assess all of the author column, I grouped and filtered the first author column to find people listed more than once. The dplyr functions identified the same set of authors as the text analysis and added three more.
+    </p>
+    <img src="images/MultiAuthsInteractive.html"
+        class="image">
+    <h2>Conclusion</h2>
+    <p>The Bluebook’s et al. suggestion would potentially anonymize authors of only thirteen of the articles in this dataset. Even so more than 20% of the articles had more than two authors. Multi-authored articles were spread fairly evenly across three of the journals, with UPenn and Harvard as slight outliers, and the years 2020 and 2021, both of which saw more published than pre-pandemic in 2019. 
+        The dataset raises more questions than it answers. More years of publications are needed to begin to analyze whether and how the pandemic affected authors’ collaboration on legal scholarship. It would be interesting to extend the dataset also to explore whether UPenn consistently publishes more co-authored articles than the other journals. Further text analysis applied to the dataset’s “title” and “summary” columns could surface the prevalence of article topics across years, publications, and authors. 
+        This exercise highlighted for me a few important practices taught in class. First, to identify and understand how the data limits potential analyses and conclusions. Second, R usually offers multiple ways to attempt to answer the same question. This is an asset but requires an R newcomer to systematically organize their knowledge about the program to learn how to use it most effectively. Third, data visualizations can obscure information. A small example of this is how a future first glance at the line graph in this analysis might see a large decrease in co-authored articles in 2022 without realizing the data included only four months of journal issues.
+    </p>
+    <h2>Footnotes</h2>
+    <ul>
+        <li>1.	The Bluebook, Rule 15.1(b) (21st ed. 2020).</li>
+        <li>2.	The Bluebook, Rule 15.1.1 at 108 (17th ed. 2000).</li>
+        <li>3.	The Bluebook, Rule 15.1(b) (18th ed. 2005).</li>
+        <li>4.	The Bluebook, Rule 15.1(b) (19th ed. 2010).</li>
+        <li>5.	21st ed., supra note 1.</li>
+        <li>6.	Paul Caron, U.S. News Abandons Plan to Issue Citations Ranking of Law Faculty, TAXPROF BLOG (Aug. 23, 2021), https://taxprof.typepad.com/taxprof_blog/2021/08/us-news-abandons-plans-to-issue-citations-ranking-of-law-faculty.html. Law school professors and law librarians have cited several concerns with measuring scholarly impact including difficulty finding a comprehensive source for citation counts and unfairness of reducing scholarly impact to a number and its potential to negatively impact professors of color and women in particular. Id.</li>
+        <li>7.	Id.</li>
+        <li>8.	The search string used was: DATE(aft 12-31-2018 & bef 05-02-2022) & SOURCE("harvard law review" OR "columbia law review" OR "university #of pennsylvania law review" OR "yale law journal") BUT NOT SOURCE(online). The “but not” connector aims to eliminate shorter response pieces that are published in the law journals’ online-only editions and not in their full print editions.</li>
+        <li>9.	The second major legal research database is Lexis, followed by relative newcomer Bloomberg Law. See, e.g., UNIVERSITY OF WASHINGTON SCHOOL OF LAW GALLAGHER LAW LIBRARY, Using Lexis, Westlaw, & Bloomberg Law, https://liblawuw.libguides.com/bigthree#s-lg-box-28727169 (last updated May 8, 2022) (describing the three legal research databases). See also Jean O’Grady, Next Generation Legal Search Engines: Westlaw Next, Lexis Advance and Bloomberg Law: The Good, The Bad and the Baffling, DEWEY B STRATEGIC (July 27, 2012), https://www.deweybstrategic.com/2012/07/next-generation-legal-search-engines.html (comparing the three competitors in the legal research market from the perspective of law school, law firm, and government users). </li>
+        <li>10.	U.S. News & World Report, 2023 Best Law Schools, https://www.usnews.com/best-graduate-schools/top-law-schools/law-rankings (last visited May 22, 2022). The four journals also are ranked in the top ten by Washington & Lee University’s Law Journal Rankings as determined by citations to the journal’s articles in other articles and court case decisions. Box #3 showing journals with top 10 Combined Score, W&L LAW JOURNAL RANKINGS, https://managementtools4.wlu.edu/LawJournals/Default.aspx (last visited May 22, 2022).</li>
+        <li>11.	Supra note 6.</li>
+        <li>12.	See generally Barry Friedman, Fixing Law Reviews, 67 DUKE L.J. 1297, 1345 (2018) (describing law journal publishing cycles).</li> 
+    </ul>
+    <
+
+            Get started...
+    
+    <p>
+        Begin by getting oriented. This Seattle Parks 
+        <a href="https://seattle.gov/parks/find">site</a> lets you find park destinations 
+        by activities like hiking, beaches, and youth and older adult. This Seattle transit 
+        <a href="https://soundtransit.org">page</a> has light rail and bus maps. 
+        <i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, unde architecto consectetur neque est ducimus iure odio blanditiis consequuntur, 
+            quas rem ipsam. Quasi, facere pariatur in iure tenetur illum deleniti?</i>
+    </p>
+    <p>
+        <i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, unde architecto consectetur neque est ducimus iure odio blanditiis consequuntur, 
+            quas rem ipsam. Quasi, facere pariatur in iure tenetur illum deleniti?</i>
+    </p>
+    <p>
+        <i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, unde architecto consectetur neque est ducimus iure odio blanditiis consequuntur, 
+            quas rem ipsam. Quasi, facere pariatur in iure tenetur illum deleniti?</i>
+    </p>
+</body>

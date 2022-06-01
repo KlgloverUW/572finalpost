@@ -1,0 +1,26 @@
+header {
+    background-size: cover;
+    background-position: center;
+    background-color: lightgray;
+    padding: 15px 15px;
+
+/*rule for header title*/
+}
+body header h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 50px;
+    text-align: right;
+    font-weight: bold;
+}
+body header h2 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 25px;
+    text-align: left;
+    text-decoration: underline;
+}
+body header h3 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    text-align: left;
+    font-style: italic
+}
